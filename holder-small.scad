@@ -17,7 +17,7 @@ module Holder(angle=30, thickness=3, width=40, height=90, lenght_x=50, panel_thi
             #cylinder(r = hole_radius, h = thickness + 2);
         }
     }
-    cube([z_size, thickness, height + panel_thickness + thickness]);
+    cube([z_size, thickness, height + panel_thickness * cos(angle) + thickness]);
     
     length_holder = width / cos(angle);
     
@@ -27,7 +27,7 @@ module Holder(angle=30, thickness=3, width=40, height=90, lenght_x=50, panel_thi
         }
     }
     
-    translate([0, 0, height + panel_thickness + thickness]) {
+    translate([0, 0, height + panel_thickness * cos(angle) + thickness]) {
         rotate([-angle, 0, 0]) {
             cube([10, length_holder, thickness]);
         }
